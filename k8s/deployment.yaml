@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: flask
-        image: yourdockerhubusername/flask-ci-cd-app:latest
+        image: eshashamraiz2004/flask-ci-cd-app:latest
         ports:
         - containerPort: 5000
