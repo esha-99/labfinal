@@ -34,8 +34,11 @@ pipeline {
 
         stage('Kubernetes Deploy') {
             steps {
-                sh 'kubectl apply -f k8s/'
-            }
+                withEnv(["KUBECONFIG=/var/lib/jenkins/.kube/config"]) {
+                    sh 'kubectl apply -f k8s/'
         }
+    }
+}
+
     }
 }
