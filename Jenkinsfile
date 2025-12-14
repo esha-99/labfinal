@@ -10,7 +10,7 @@ pipeline {
         stage('Code Fetch') {
             steps {
                 git branch: 'main',
-                url: 'https://github.com/yourusername/sample-ci-cd-project.git'
+                url: 'https://github.com/esha-99/labfinal'
             }
         }
 
