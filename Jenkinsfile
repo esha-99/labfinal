@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "yourdockerhubusername/flask-ci-cd-app"
+        IMAGE_NAME = "eshashamraiz2004/flask-ci-cd-app"
     }
 
     stages {
@@ -10,7 +10,7 @@ pipeline {
         stage('Code Fetch') {
             steps {
                 git branch: 'main',
-                url: 'https://github.com/yourusername/sample-ci-cd-project.git'
+                url: 'https://github.com/esha-99/labfinal'
             }
         }
 
@@ -34,8 +34,12 @@ pipeline {
 
         stage('Kubernetes Deploy') {
             steps {
-                sh 'kubectl apply -f k8s/'
+                withEnv(["KUBECONFIG=/var/lib/jenkins/.kube/config"]) {
+                    sh 'whoami'
+                    sh 'kubectl apply -f k8s/ --validate=false'
+                }
             }
         }
+
     }
 }
