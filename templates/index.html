@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask Messages App</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h1 { color: #333; }
+        ul { list-style: none; padding: 0; }
+        li { margin-bottom: 10px; }
+        a { color: red; text-decoration: none; margin-left: 10px; }
+        form input[type="text"] { padding: 5px; width: 300px; }
+        form input[type="submit"] { padding: 5px 10px; }
+    </style>
+</head>
+<body>
+    <h1>Flask Messages App</h1>
+
+    <form action="{{ url_for('add_message') }}" method="POST">
+        <input type="text" name="message" placeholder="Enter a message" required>
+        <input type="submit" value="Add">
+    </form>
+
+    <h2>Messages</h2>
+    <ul>
+        {% for msg in messages %}
+            <li>
+                {{ msg.message }}
+                <a href="{{ url_for('delete_message', id=msg.id) }}">[Delete]</a>
+            </li>
+        {% else %}
+            <li>No messages yet!</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
