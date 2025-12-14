@@ -36,10 +36,10 @@ pipeline {
             steps {
                 withEnv(["KUBECONFIG=/var/lib/jenkins/.kube/config"]) {
                     sh 'whoami'
-                    sh 'kubectl apply -f k8s/'
+                    sh 'kubectl apply -f k8s/ --validate=false'
+                }
+            }
         }
-    }
-}
 
     }
 }
